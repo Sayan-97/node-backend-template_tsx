@@ -1,14 +1,18 @@
 {
   "compilerOptions": {
+    "target": "esnext",
+    "module": "preserve",
     "rootDir": "src",
     "baseUrl": "./",
     "outDir": "dist",
     "moduleDetection": "force",
-    "module": "Preserve",
     "resolveJsonModule": true,
     "allowJs": true,
     "esModuleInterop": true,
     "isolatedModules": true,
+    "removeComments": true,
+    "strict": true,
+    "verbatimModuleSyntax": true,
     "paths": {
       "@/*": ["src/*"]
     }
