@@ -1,4 +1,4 @@
-import type { Request, Response, NextFunction } from "express";
+import type { Request, Response, NextFunction } from 'express';
 
 export const notFound = (req: Request, res: Response, next: NextFunction) => {
   const error = new Error(`Route Not Found: ${req.originalUrl}`);
@@ -10,10 +10,10 @@ export function errorHandler(
   err: unknown,
   _req: Request,
   res: Response<ApiResponse>,
-  _next: NextFunction
+  _next: NextFunction,
 ) {
-  let statusCode = res.statusCode >= 400 ? res.statusCode : 500;
-  let message = "Something went wrong";
+  const statusCode = res.statusCode >= 400 ? res.statusCode : 500;
+  let message = 'Something went wrong';
   let errorDetail: string | undefined;
 
   if (err instanceof Error) {
@@ -24,7 +24,7 @@ export function errorHandler(
   const response: ApiResponse = {
     success: false,
     error: message,
-    stack: process.env.NODE_ENV === "production" ? undefined : errorDetail,
+    stack: process.env.NODE_ENV === 'production' ? undefined : errorDetail,
   };
 
   res.status(statusCode).json(response);

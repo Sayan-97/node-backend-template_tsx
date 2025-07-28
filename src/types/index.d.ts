@@ -1,4 +1,4 @@
-declare type ApiResponse<T = any> = {
+declare type ApiResponse<T = unknown> = {
   success: boolean;
   message?: string;
   data?: T;
