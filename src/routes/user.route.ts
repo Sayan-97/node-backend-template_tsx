@@ -10,7 +10,7 @@ import { checkAuth } from '@/middlewares/checkAuth';
 const router: Router = Router();
 
 router.get('/get-current-user', checkAuth, asyncHandler(getCurrentUser));
-router.post('/update-current-user', checkAuth, asyncHandler(updateCurrentUser));
+router.put('/update-current-user', checkAuth, asyncHandler(updateCurrentUser));
 router.delete(
   '/delete-current-user',
   checkAuth,
