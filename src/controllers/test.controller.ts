@@ -17,3 +17,13 @@ export async function getErrorResponse(
 ): Promise<Response> {
   throw new Error('Test error');
 }
+
+export async function getProtectedResponse(
+  _req: Request,
+  res: Response,
+): Promise<Response> {
+  return sendResponse(res, 200, {
+    success: true,
+    message: 'Protected route works properly!',
+  });
+}

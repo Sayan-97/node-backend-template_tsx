@@ -6,16 +6,16 @@ import sendResponse from '@/utils/sendResponse';
 import env from '@/configs/env';
 import { loginSchema, registerSchema } from '@/validations/auth.validation';
 
-const generateToken = (userId: string) => {
+const generateToken = (userId: string): string => {
   return jwt.sign({ id: userId }, env.JWT_SECRET as string, {
     expiresIn: '1d',
   });
 };
 
-export const registerUser = async (
+export async function registerUser(
   req: Request,
   res: Response,
-): Promise<Response> => {
+): Promise<Response> {
   const parsedBody = registerSchema.safeParse(req.body);
   if (!parsedBody.success) {
     return sendResponse(res, 400, {
@@ -61,12 +61,12 @@ export const registerUser = async (
       token,
     },
   });
-};
+}
 
-export const loginUser = async (
+export async function loginUser(
   req: Request,
   res: Response,
-): Promise<Response> => {
+): Promise<Response> {
   const parsedBody = loginSchema.safeParse(req.body);
   if (!parsedBody.success) {
     return sendResponse(res, 400, {
@@ -112,16 +112,16 @@ export const loginUser = async (
       token,
     },
   });
-};
+}
 
-export const logoutUser = async (
+export async function logoutUser(
   _req: Request,
   res: Response,
-): Promise<Response> => {
+): Promise<Response> {
   res.clearCookie('token');
 
   return sendResponse(res, 200, {
     success: true,
     message: 'User logged out successfully',
   });
-};
+}
