@@ -6,6 +6,7 @@ import morgan from 'morgan';
 import compression from 'compression';
 import corsOptions from '@/configs/corsOptions';
 import rateLimiter from '@/configs/rateLimiter';
+import { connectDB } from '@/configs/db';
 import { errorHandler, notFound } from '@/middlewares/errorHandler';
 import testRoutes from '@/routes/test.route';
 
@@ -23,6 +24,8 @@ app.use(
     crossOriginResourcePolicy: { policy: 'cross-origin' },
   }),
 );
+
+connectDB();
 
 app.get('/', (_, res: Response) => {
   res.json({ message: 'Server up and running!' });

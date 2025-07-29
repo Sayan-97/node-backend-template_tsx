@@ -5,6 +5,7 @@ dotenv.config();
 const env = {
   PORT: process.env.PORT || 8000,
   NODE_ENV: process.env.NODE_ENV || 'development',
+  DB_URI: process.env.DB_URI,
   WHITELISTED_DOMAINS: ['http://localhost:3000'],
 };
 
