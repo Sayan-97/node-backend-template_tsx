@@ -9,6 +9,7 @@ import rateLimiter from '@/configs/rateLimiter';
 import { connectDB } from '@/configs/db';
 import { errorHandler, notFound } from '@/middlewares/errorHandler';
 import testRoutes from '@/routes/test.route';
+import authRoutes from '@/routes/auth.route';
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.get('/', (_, res: Response) => {
 
 // ROUTES
 app.use('/api/test', testRoutes);
+app.use('/api/auth', authRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
